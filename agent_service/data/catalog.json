@@ -1,0 +1,81 @@
+{
+  "business": {
+    "name": {"hebrew": "פדאל אנד קו", "arabic": "بيدال آند كو", "english": "Pedal & Co."},
+    "about": "Fictional bike rental, tours and repair shop on the Tel Aviv promenade. Open Sunday to Friday 08:00-19:00, closed Saturday.",
+    "hours": "Sun-Thu 08:00-19:00, Fri 08:00-14:00, closed Sat"
+  },
+  "items": [
+    {
+      "id": "city-bike-day",
+      "price": 60,
+      "stock": 25,
+      "name": {"hebrew": "השכרת אופני עיר ליום", "arabic": "تأجير دراجة مدينة ليوم", "english": "City bike rental, full day"},
+      "unit": {"hebrew": "ליום", "arabic": "لليوم", "english": "per day"},
+      "description": {"hebrew": "אופניים עם סל ומנעול, קסדה כלולה", "arabic": "دراجة مع سلة وقفل، الخوذة مشمولة", "english": "Bike with basket and lock, helmet included"},
+      "keywords": ["אופניים", "אופני עיר", "עיר", "רגילים", "دراجة", "دراجات", "عادية", "bike", "bicycle", "city", "regular"]
+    },
+    {
+      "id": "ebike-day",
+      "price": 140,
+      "stock": 12,
+      "name": {"hebrew": "השכרת אופניים חשמליים ליום", "arabic": "تأجير دراجة كهربائية ليوم", "english": "E-bike rental, full day"},
+      "unit": {"hebrew": "ליום", "arabic": "لليوم", "english": "per day"},
+      "description": {"hebrew": "סוללה ל-60 ק\"מ, מגיל 16 בלבד", "arabic": "بطارية لمسافة 60 كم، من عمر 16 فقط", "english": "60 km battery, riders 16 and over"},
+      "keywords": ["חשמליים", "אופניים חשמליים", "חשמלי", "كهربائية", "كهربائي", "ebike", "e-bike", "electric"]
+    },
+    {
+      "id": "ebike-hour",
+      "price": 35,
+      "stock": 12,
+      "name": {"hebrew": "אופניים חשמליים לשעה", "arabic": "دراجة كهربائية بالساعة", "english": "E-bike rental, hourly"},
+      "unit": {"hebrew": "לשעה", "arabic": "للساعة", "english": "per hour"},
+      "description": {"hebrew": "מינימום שעה, מגיל 16 בלבד", "arabic": "ساعة على الأقل، من عمر 16 فقط", "english": "One hour minimum, riders 16 and over"},
+      "keywords": ["שעה", "לשעה", "חשמליים", "ساعة", "كهربائية", "hour", "hourly", "electric"]
+    },
+    {
+      "id": "coast-tour",
+      "price": 180,
+      "stock": 15,
+      "name": {"hebrew": "סיור מודרך לאורך החוף", "arabic": "جولة مع مرشد على طول الشاطئ", "english": "Guided coastal ride"},
+      "unit": {"hebrew": "לאדם", "arabic": "للشخص", "english": "per person"},
+      "description": {"hebrew": "3 שעות מיפו לנמל תל אביב, מגיל 12", "arabic": "3 ساعات من يافا إلى ميناء تل أبيب، من عمر 12", "english": "3 hours from Jaffa to the Tel Aviv port, ages 12+"},
+      "keywords": ["סיור", "מודרך", "מדריך", "חוף", "יפו", "جولة", "مرشد", "شاطئ", "يافا", "tour", "guided", "guide", "coast", "jaffa"]
+    },
+    {
+      "id": "family-ride",
+      "price": 120,
+      "stock": 10,
+      "name": {"hebrew": "רכיבה משפחתית בפארק", "arabic": "جولة عائلية في الحديقة", "english": "Family ride in the park"},
+      "unit": {"hebrew": "לאדם, ילדים עד 6 חינם", "arabic": "للشخص، الأطفال حتى 6 سنوات مجانا", "english": "per person, kids under 6 free"},
+      "description": {"hebrew": "שעתיים בפארק הירקון, אופני ילדים וכיסאות ילד כלולים", "arabic": "ساعتان في حديقة اليركون، دراجات أطفال ومقاعد أطفال مشمولة", "english": "2 hours in Yarkon Park, kids' bikes and child seats included"},
+      "keywords": ["משפחה", "משפחתית", "ילדים", "פארק", "عائلة", "عائلية", "اطفال", "حديقة", "family", "kids", "children", "park"]
+    },
+    {
+      "id": "kids-bike-day",
+      "price": 30,
+      "stock": 8,
+      "name": {"hebrew": "השכרת אופני ילדים ליום", "arabic": "تأجير دراجة أطفال ليوم", "english": "Kids' bike rental, full day"},
+      "unit": {"hebrew": "ליום", "arabic": "لليوم", "english": "per day"},
+      "description": {"hebrew": "גילאי 4-10, קסדה כלולה", "arabic": "لعمر 4-10 سنوات، الخوذة مشمولة", "english": "Ages 4-10, helmet included"},
+      "keywords": ["ילדים", "ילד", "אופני ילדים", "اطفال", "طفل", "kids", "child"]
+    },
+    {
+      "id": "puncture-repair",
+      "price": 40,
+      "stock": 99,
+      "name": {"hebrew": "תיקון פנצ'ר", "arabic": "تصليح ثقب", "english": "Puncture repair"},
+      "unit": {"hebrew": "לגלגל", "arabic": "للعجلة", "english": "per wheel"},
+      "description": {"hebrew": "במקום, תוך 20 דקות", "arabic": "في المكان، خلال 20 دقيقة", "english": "While you wait, about 20 minutes"},
+      "keywords": ["פנצ'ר", "פנצר", "תיקון", "גלגל", "ثقب", "تصليح", "اصلاح", "عجلة", "puncture", "flat", "repair", "tire", "tyre"]
+    },
+    {
+      "id": "tune-up",
+      "price": 220,
+      "stock": 99,
+      "name": {"hebrew": "טיפול מלא לאופניים", "arabic": "صيانة كاملة للدراجة", "english": "Full tune-up"},
+      "unit": {"hebrew": "לאופניים", "arabic": "للدراجة", "english": "per bike"},
+      "description": {"hebrew": "בלמים, הילוכים ושרשרת, מוכן למחרת", "arabic": "فرامل وغيارات وجنزير، جاهزة في اليوم التالي", "english": "Brakes, gears and chain, ready the next day"},
+      "keywords": ["טיפול", "תיקון", "בלמים", "הילוכים", "שרשרת", "صيانة", "تصليح", "فرامل", "جنزير", "service", "tune", "tuneup", "repair", "brakes", "gears"]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: agent
+          POSTGRES_PASSWORD: agent
+          POSTGRES_DB: agent
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U agent" --health-interval 3s --health-retries 20
+    env:
+      TEST_DATABASE_URL: postgresql://agent:agent@localhost:5432/agent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -e ".[postgres,dev]"
+      - run: ruff check . && ruff format --check .
+      - run: pytest -q
+      - name: Eval smoke set (demo model, plumbing check)
+        run: python evals/run_evals.py --demo --tag smoke --min-pass-rate 1.0
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and boot with Postgres
+        run: |
+          docker compose up -d --build --wait
+          curl -fsS localhost:8000/healthz
+          curl -fsS -X POST localhost:8000/v1/messages -H 'content-type: application/json' \
+            -d '{"message_id":"ci-1","conversation_id":"15550100001","text":"כמה עולה סיור מודרך?"}' | tee out.json
+          grep -q '"status":"replied"' out.json
+          docker compose restart agent && docker compose up -d --wait
+          curl -fsS localhost:8000/v1/conversations/15550100001 | grep -q 'כמה עולה סיור מודרך'
+      - if: always()
+        run: docker compose logs agent | tail -50
+
+  eval-real-model:
+    # Manual run against a real model; needs the LLM_API_KEY repository secret.
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      LLM_PROVIDER: openai_compat
+      LLM_BASE_URL: ${{ vars.LLM_BASE_URL || 'https://api.openai.com/v1' }}
+      LLM_MODEL: ${{ vars.LLM_MODEL || 'gpt-4o-mini' }}
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - run: python evals/run_evals.py --repeats 3 --out runs/result.json | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: eval-result
+          path: runs/result.json

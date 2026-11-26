@@ -1,0 +1,3 @@
+"""Reference implementation of a production WhatsApp AI agent."""
+
+__version__ = "0.1.0"
